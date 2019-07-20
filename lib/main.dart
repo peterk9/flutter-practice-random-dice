@@ -27,6 +27,14 @@ class _DicePageState extends State<DicePage> {
   int rightDiceNumber = 2;
   int total = 0;
 
+  void randomizeDice() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+      total = leftDiceNumber + rightDiceNumber;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     total = leftDiceNumber + rightDiceNumber;
@@ -60,11 +68,7 @@ class _DicePageState extends State<DicePage> {
           FloatingActionButton(
             child: Icon(Icons.games),
             onPressed: () {
-              setState(() {
-                leftDiceNumber = Random().nextInt(6) + 1;
-                rightDiceNumber = Random().nextInt(6) + 1;
-                total = leftDiceNumber + rightDiceNumber;
-              });
+              randomizeDice();
             },
           )
         ],
